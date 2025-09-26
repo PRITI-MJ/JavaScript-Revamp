@@ -124,7 +124,7 @@ h = 20;
 console.log(g, h); // 10 20
 //here it is different because g and h are pointing to different location due to its immutability
 //here g's value is copied to h's location. g's location value remain unchanged.
-
+//Pass by value
 
 
 //Non-primitive data types are mutable(can be changed)
@@ -144,7 +144,11 @@ console.log(obj); //{ name: 'Rohan', age: 20 }
 
 let obj2 = obj;
 obj2.age = 30;
-console.log(obj);
+console.log(obj); //{ name: 'Rohan', age: 30 }
+// it is because obj2 and obj is pointing to the same location
+// Pass by reference
+
+
 
 
 
