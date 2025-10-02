@@ -8,3 +8,11 @@ why we should not use object for assigning numbers?
 
 Non-primitive: Compares on the basis of reference
 Primitive: Copy by value (compares on the basis of data)
+
+
+Why Randpm method can't be used as a secure OTP Generate method?
+-> So there is a code to return the random numbers, it takes the input and gives the output.
+-> The code is same, if the input will be same, then the output will also be same. So, to avoid this, we have to set different input always.
+-> For different input, we need to take the input from time seed.
+-> That is why we are not using it as an OTP, because cyber attackers can also use the same time seed and guess the OTP.
+
