@@ -1,0 +1,3 @@
+-> We should not prefer for-in loop for iteration in objects
+-> Rather than we should use for of loop, But that is not possible in objects directly.
+-> As we know, Object.keys and Object.values returns array, so first we change it to array and then perform the for-of loop

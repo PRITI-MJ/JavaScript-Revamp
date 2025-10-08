@@ -218,3 +218,12 @@ console.log(x);
   console.log(k); //[ 10, 309, 'Rohit', 9.3, true, name: 'Mohan' ] 
   //so we can say that array behaves as a object in javascript
 
+
+
+  //destructing of array
+  const arr11 = [10,20,30,40,50];
+  //this will extract values in series
+  const [m, n] = arr11;
+
+  console.log(m, n); //10 20
+
