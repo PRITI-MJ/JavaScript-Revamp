@@ -32,4 +32,17 @@ That is why arrays are treated as objects
 KEYS in object can be String and symbol
 
 
+How can we store arrays and objects in JS?
+-> instead of storing the values, we are storing the address in array(which is taking same bytes), so that we can access the addresses by formula, by using that address, we can access the value.
+-> But there is problem in this method, if many new values starts to come in the array, the address will shift to a different location, and we are assigning the address to a const value(means the address can 't be changed), so it will cause issue.
+
+-> to fix this issue, there are Map Pointer, Property pointer, Element pointer present.
+
+-> Property pointer is pointing to the element pointer address.
+-> Element pointer pointing to the starting address of the array.
+-> So if there is any changes, it will make changes on the element pointer address, and the property pointer address remain unchanged.
+-> Map pointer is pointing to property pointer, as in case multiple users, it can directly access to that address, instead of searching it manually. (Hash map concept).
+-> With the help of keys, we can create unique addresses using hashmap.(map pointer refers to that)
+So, using Map pointer, we can directly access the values of object.
+
 
