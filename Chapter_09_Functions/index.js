@@ -125,8 +125,92 @@ console.log(squareNumber(6));//36
 //here we are using parenthesis surrounding the {}
 //it is because when we write key value inside that curly braces, arrow function behaves like the {} as a part of function and expect return word inside that {} 
 //to fix this issue we are using parethesis so that it doesnot get confused
-const user = () => ({name:Rohit, age:20})
+const user = () => ({name:"Rohit", age:20});
+// user();
 
 
 
 //IIFE => Immediately invoked function
+//here we are calling function as soon as we are declaring it
+//Brfore initializing IIFE, we need to make sure that the previous line should end with semi-colon, so that it doesn't get liked with the previous function
+(function greeting3(){
+    console.log("hello");
+})();
+
+(function greeting2(){
+    console.log("hello ji");
+})();
+
+(() => {
+    console.log("Hi");
+})();
+
+
+
+//Function Callback
+//A callback function is a function which is passed as a argument in another function
+function greet(){
+    console.log("Hello ji, kaise ho!");
+}
+
+function dance(){
+    console.log("I am dancing");
+}
+
+
+function meet(callback){
+    console.log("i am going to meet someone!");
+    callback();
+    //we can also use greet() function directly.
+    //But the issue is that, there may be multiple function which we want to use as callback function
+    //For that we have to create multiple callback functions
+    //to resolve this issue, we use callback() instead of hardcoded the function directly
+    console.log("I have finished meeting")
+}
+
+meet(greet);
+//i am going to meet someone!
+//Hello ji, kaise ho!
+// I have finished meeting
+
+//But if we use meet(greet()) -> it will throw error because we are passing the argument as callback which is not a function, we are paasing that function as argument
+
+
+meet(dance);
+//i am going to meet someone!
+// I am dancing
+// I have finished meeting
+
+
+
+//Realife example:-
+//one payment gateway is using by two different merged apps
+//eg: Zomato and Blinkit
+function blinkitOrderPlaced(){
+    console.log("We have started packing your order");
+}
+
+function zomatoOrderPlaced(){
+    console.log("We have started preparing your food");
+}
+
+function payment(amount, callback){
+    console.log(`${amount} payment is initialized`)
+    console.log("Payment is recieved");
+    callback();
+
+    //GST: Government 
+    //Rider's payment
+    //Company's Payment
+}
+
+payment(500, zomatoOrderPlaced);
+/* 500 payment is initialized
+Payment is recieved
+We have started preparing your food*/
+
+
+payment(300, blinkitOrderPlaced);
+/* 300 payment is initialized
+Payment is recieved
+We have started packing your order*/
