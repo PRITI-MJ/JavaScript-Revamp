@@ -5,3 +5,6 @@
 
 
 
+Closure => A function which remembers the variables of its outer scope even after the outer scope function has finished executing.
+![alt text](image.png)
+![alt text](image-1.png)
