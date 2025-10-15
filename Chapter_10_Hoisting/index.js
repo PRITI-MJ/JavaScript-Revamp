@@ -73,3 +73,7 @@ const addNum2 = function(num1, num2){
 //here it is working because func code is stored during execution phase
 const result = addNum2(c, d);
 console.log(result);//30
+
+
+
+ 

@@ -6,5 +6,6 @@
 
 
 Closure => A function which remembers the variables of its outer scope even after the outer scope function has finished executing.
+Closure => A function along with its lexical scope forms a closure.
 ![alt text](image.png)
 ![alt text](image-1.png)
