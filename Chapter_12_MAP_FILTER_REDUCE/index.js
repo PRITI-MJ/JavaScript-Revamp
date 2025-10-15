@@ -228,4 +228,133 @@ console.log(ans);
 ]
 */
 
+//creating Map in JS manually
+Array.prototype.myMap = function(callback) {
+  let temp = [];
+  for(let i = 0; i < this.length; i++){
+    temp.push(callback(this[i], i, this));
+  }
 
+  return temp;
+}
+
+const nums = [1, 2, 3, 4];
+
+const multiplyThree = nums.myMap((num, i, arr) => {
+  return num * 3;
+})
+console.log(multiplyThree); //[ 3, 6, 9, 12 ]
+
+
+
+//Reduce function => It will iterate in the array and returns a value
+//it has two parameters => accumulator, currentValue
+//currentValue is the iterable value, accumulator is the calculated value(like sum)
+const totalPrice = products.reduce((accumulator, currValue) => {
+    if(currValue.inStock)
+        return accumulator+currValue.price;
+    else
+        return accumulator;
+},0);
+console.log(totalPrice); //2368
+
+
+//Data Structure : set
+//Set is a list which contains only unique values
+
+const arr4 = [10, 20, 30, 10, 25, 15, 10, 20]
+
+const s1 = new Set(arr);
+s1.add(11);
+console.log(s1); //{ 10, 20, 30, 40, 90, 11 }
+
+const s2 = new Set();
+console.log(s2); //{}
+ 
+console.log(s1.has(20)); //true
+console.log(s1.has(23)); //false
+
+s1.delete(10);
+console.log(s1); //{ 20, 30, 40, 90, 11 }
+
+console.log(s1.size); //5
+
+s1.clear();
+console.log(s1); //{}
+
+
+//unique values in an array not in {}
+const email = ["ro@gm", "ra@gm", "mo@gm", "ro@gm"];
+
+const uniqueEmail = [...new Set(email)];
+console.log(uniqueEmail); //[ 'ro@gm', 'ra@gm', 'mo@gm' ]
+
+
+//iterate in set
+const s3 = new Set(email);
+
+for(let num of s3){
+  console.log(num);
+}
+/* 
+ro@gm
+ra@gm
+mo@gm
+*/
+
+//Map as a data structure
+const m1 = new Map([
+  ["Rohit", 40],
+  [2, "Rohit"],
+  [true, 11],
+  [[10,30,11], "Mohit"]
+])
+
+//adding values to m1
+m1.set({name: "Manish", age: 20}, false);
+
+console.log(m1);
+/* 
+{
+  'Rohit' => 40,
+  2 => 'Rohit',
+  true => 11,
+  [ 10, 30, 11 ] => 'Mohit',
+  { name: 'Manish', age: 20 } => false
+}
+*/
+
+//to know a value is present or not in map
+console.log(m1.has("Rohit")); //true
+
+
+//to get a value of any key
+console.log(m1.get("Rohit")); //40
+
+//to delete a key- value pair
+m1.delete("Rohit");
+console.log(m1);
+/* 
+{
+  2 => 'Rohit',
+  true => 11,
+  [ 10, 30, 11 ] => 'Mohit',
+  { name: 'Manish', age: 20 } => false
+}
+*/
+
+//size of map
+console.log(m1.size); //4
+
+
+//iterate in set by destructuring
+for(let [keys, value] of m1){
+  console.log(keys, value)
+}
+/* 
+2 Rohit
+true 11
+[ 10, 30, 11 ] Mohit
+{ name: 'Manish', age: 20 } false
+*/
+  
