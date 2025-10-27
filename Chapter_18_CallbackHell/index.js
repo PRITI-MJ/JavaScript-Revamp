@@ -1,11 +1,22 @@
 // Zomato appliction
 
-function placedOrder(callback){
-    console.log("Payment is in progress");
+const orderDetail = {
+    orderId: 123123,
+    food: ["Pizza", "Biriyani", "Coke"],
+    cost: 620,
+    customer_name: "Rohit",
+    customer_location: "Dwarka",
+    restaurant_location: "Delhi"
+
+}
+
+function placedOrder(orderDetail, callback){
+    console.log(`${orderDetail.cost} Payment is in progress`);
 
     setTimeout(() => {
         console.log("Payment is received and order get placed");
-         callback();
+        orderDetail.status = true;
+         callback(orderDetail);
     }, 3000);
 
    
@@ -13,12 +24,13 @@ function placedOrder(callback){
 
 
 
-function preparingOrder(callback){
-    console.log("Your preparation started");
+function preparingOrder(orderDetail, callback){
+    console.log(`Your preparation started of ${orderDetail.food}`);
 
     setTimeout(() => {
         console.log("Your order is now prepared");
-        callback();
+        orderDetail.token = 123;
+        callback(orderDetail);
     }, 3000);
 }
 
@@ -33,12 +45,13 @@ function preparingOrder(callback){
 
 // placedOrder(preparingOrder);
 
-function pickupOrder(callback){
-    console.log("Delivery boy is on the way to pick up your order");
+function pickupOrder(orderDetail, callback){
+    console.log(`Delivery boy is on the way to pick up your order from ${orderDetail.restaurant_location}`);
 
     setTimeout(() => {
         console.log("I have picked up the order");
-        callback();
+        orderDetail.received = true;
+        callback(orderDetail);
         }, 3000);
 }
 
@@ -52,18 +65,25 @@ function pickupOrder(callback){
 //     })
 // })
 
-function deliverOrder(){
-    console.log("I am on my way to deliver your order");
+function deliverOrder(orderDetail){
+    console.log(`I am on my way to deliver your order to ${orderDetail.customer_location}`);
     setTimeout(() => {
         console.log("Order delivered successfully");
+        orderDetail.delivery = true;
     }, 3000)
 
 }
 
-placedOrder(() => {
-    preparingOrder(() => {
-        pickupOrder(() => {
-            deliverOrder();
+placedOrder(orderDetail, (orderDetail) => {
+    preparingOrder(orderDetail, (orderDetail) => {
+        pickupOrder(orderDetail, (orderDetail) => {
+            deliverOrder(orderDetail);
         });
     })
 })
+
+//This is called callback hell => here one callback is inside another callback which is inside another callback and so on
+//This makes the code hard to read and maintain
+//To avoid callback hell, we can use Promises and async/await
+
+
