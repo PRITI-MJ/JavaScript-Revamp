@@ -85,3 +85,23 @@ console.log("Hello World End");
 // console.log(objFormat);
 //{ name: 'Rohit', age: 30, address: 'dwarka' }
 
+
+
+
+//CREATE A PROMISE MANUALLY
+const p1 = new Promise((resolve, reject) => {
+    resolve("Hello"); //Promise { 'Hello' }
+    //we can also send promise in form of object or array
+    //resolve({name: "Rohit", age: 30});
+    //resolve([1,2,3,4,5]);
+
+    //reject("hello") 
+    //This will not work because this way reject can't work, for this we have to use .catch()
+})
+console.log(p1); //Promise { 'Hello' }
+
+p1.then((response) => {
+    console.log(response); //Hello
+}).catch((error) => {
+    console.log(error);
+})
