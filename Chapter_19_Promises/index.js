@@ -99,44 +99,62 @@ const orderDetail = {
 
 }
 
+
+//for using reject in promise, we can use random number generation to simulate error
 function placedOrder(orderDetail){
     console.log(`${orderDetail.cost} Payment is in progress`);
 
    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-        console.log("Payment is received and order get placed");
-        orderDetail.status = true;
-        resolve(orderDetail);
-    }, 3000);
-
-    })
     
-   
+        
+               setTimeout(() => {
+                if(Math.random() > 0.1){
+                console.log("Payment is received and order get placed");
+                orderDetail.status = true;
+                resolve(orderDetail);
+                }
+                else{
+                    reject("Payment is failed");    
+                }
+            }, 3000);
+        })
 }
-
-
 
 function preparingOrder(orderDetail){
     console.log(`Your preparation started of ${orderDetail.food}`);
 
-    return new Promise((resolve, reject) => {   
-        setTimeout(() => {
-        console.log("Your order is now prepared");
-        orderDetail.token = 123;
-         resolve(orderDetail);
-    }, 3000);
-    })
+   return new Promise((resolve, reject) => {
     
+        
+               setTimeout(() => {
+                if(Math.random() > 0.5){
+                console.log("Your order is now prepared");
+                orderDetail.token = 123;
+                resolve(orderDetail);
+                }
+                else{
+                    reject("Food item is not present at restaurant");    
+                }
+            }, 3000);
+        })
 }
+
+
 
 
 function pickupOrder(orderDetail){
     console.log(`Delivery boy is on the way to pick up your order from ${orderDetail.restaurant_location}`);
     return new Promise((resolve, reject) => { 
         setTimeout(() => {
-        console.log("I have picked up the order");
-        orderDetail.received = true;
-        resolve(orderDetail);
+        if(Math.random() > 0.1) {
+            console.log("I have picked up the order");
+            orderDetail.received = true;
+            resolve(orderDetail);
+        } 
+        else{
+            reject("Delivery boy unable to reach restaurant");
+        }
+        
         }, 3000);
     })
     
@@ -167,6 +185,10 @@ placedOrder(orderDetail)
 .catch((error) => {
     console.log("Error occurred:", error);
 })
+.finally(() => {
+    console.log("I am doing cleanup"); 
+}
+)
 
 
 

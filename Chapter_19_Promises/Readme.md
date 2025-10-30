@@ -20,3 +20,5 @@ Difference between JSON and JS object?
 -> JS object will only be understood by JS.
 -> In JSON, undefined is not allowed, function is also not present where as In JS object it is allowed.
 -> JSON is in string format where as in JS object it is a Javascript Object.
+
+The finally() method in JavaScript Promises schedules a function to be executed when a promise is settled, meaning it has either been fulfilled (resolved successfully) or rejected (failed). This method is useful for performing cleanup or finalization tasks that need to occur regardless of the promise's outcome. 
